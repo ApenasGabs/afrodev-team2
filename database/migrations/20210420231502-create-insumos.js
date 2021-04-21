@@ -1,7 +1,5 @@
-'use strict';
-
 module.exports = {
-  up: async (queryInterface, Sequelize) =>queryInterface.createTable('inputs', {
+  up: async (queryInterface, Sequelize) => queryInterface.createTable('inputs', {
     id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
@@ -9,7 +7,7 @@ module.exports = {
       autoIncrement: true,
     },
     name: {
-      type:Sequelize.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     type: {
@@ -17,7 +15,7 @@ module.exports = {
       allowNull: false,
     },
     expiration_date: {
-      type: Sequelize.DATE,
+      type: Sequelize.STRING,
     },
     quantity: {
       type: Sequelize.DOUBLE,
@@ -38,5 +36,5 @@ module.exports = {
   }),
 
   down: async (queryInterface, Sequelize) => {
-  }
+  },
 };

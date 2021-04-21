@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-expressions */
 const Inputs = require('../model/inputs');
 
 exports.register = async (inputs) => {
