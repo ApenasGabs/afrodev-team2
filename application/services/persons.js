@@ -60,7 +60,11 @@ exports.patch = async (id, newpersons) => {
 
 exports.update = async (id, newpersons) => {
   try {
-    const persons = await Persons.findOne({ id });
+    const persons = await Persons.findOne({
+      where: {
+        id,
+      },
+    });
     persons.set(newpersons);
     persons.save();
     return persons;
