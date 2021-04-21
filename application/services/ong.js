@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const Ong = require('../model/ong');
 
 exports.register = async (ong) => {
