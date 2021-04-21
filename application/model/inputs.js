@@ -3,9 +3,9 @@ const { DataTypes } = require('sequelize');
 const Model = require('./baseModel');
 
 class Inputs extends Model {
-    static init(sequelize){
-        super.init(
-            {
+  static init(sequelize){
+    super.init(
+        {
                 id: {
                     type:DataTypes.INTEGER,
                     autoIncrement: true,
@@ -39,6 +39,6 @@ class Inputs extends Model {
             },
         );
     }
-}
+};
 
 module.exports = Inputs;
