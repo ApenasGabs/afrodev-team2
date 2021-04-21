@@ -24,6 +24,10 @@ class Persons extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
+        status: {
+          type: DataTypes.ENUM('active', 'inactive'),
+          allowNull: false,
+        },
       },
       {
         sequelize,
