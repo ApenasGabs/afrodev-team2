@@ -30,6 +30,12 @@ exports.findAll = async (persons) => {
 exports.findById = async (id) => {
   try {
     const result = await Persons.findByPk(id);
+    if (!result) {
+      const error = new Error();
+      error.message = 'Id not found in database';
+      error.statusCode = 404;
+      return error;
+    }
     return result;
   } catch (err) {
     console.log(err);
@@ -41,11 +47,18 @@ exports.findById = async (id) => {
 
 exports.patch = async (id, newpersons) => {
   try {
-    return await Persons.update(newpersons, {
+    const result = await Persons.update(newpersons, {
       where: {
         id,
       },
     });
+    if (!result) {
+      const error = new Error();
+      error.message = 'Id not found in database';
+      error.statusCode = 404;
+      return error;
+    }
+    return result;
   } catch (err) {
     console.log(err);
     const error = new Error('An error ocurred while updating persons');
@@ -57,6 +70,12 @@ exports.patch = async (id, newpersons) => {
 exports.update = async (id, newpersons) => {
   try {
     const persons = await Persons.findByPk(id);
+    if (!persons) {
+      const error = new Error();
+      error.message = 'Id not found in database';
+      error.statusCode = 404;
+      return error;
+    }
     persons.set(newpersons);
     persons.save();
     return persons;
