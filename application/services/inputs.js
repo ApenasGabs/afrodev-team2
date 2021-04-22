@@ -61,7 +61,7 @@ exports.patch = async (id, newInputs) => {
 
 exports.update = async (id, newInputs) => {
   try {
-    const inputs = await Inputs.findOne({ id });
+    const inputs = await Inputs.findByPk(id);
     inputs.set(newInputs);
     inputs.save;
     return inputs;
