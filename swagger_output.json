@@ -159,6 +159,144 @@
                 },
                 "phone": {
                   "type": "string",
+                  "example": "(19) 99999-9998"
+                }
+              },
+              "required": [
+                "name",
+                "description",
+                "email",
+                "phone"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/medicines": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "post medicines object",
+            "in": "body",
+            "description": "New medicines values",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "new medicine"
+                },
+                "manufacturer": {
+                  "type": "string",
+                  "example": "the manufacturer"
+                },
+                "prescription": {
+                  "type": "string",
+                  "example": "false or true"
+                },
+                "amount": {
+                  "type": "string",
+                  "example": "amount of medicine"
+                },
+                "expiration_date": {
+                  "type": "string",
+                  "example": "yyyy/mm/dd"
+                },
+                "batch": {
+                  "type": "string",
+                  "example": "batch here"
+                }
+              },
+              "required": [
+                "name",
+                "manufacturer",
+                "prescription",
+                "amount",
+                "expiration_date",
+                "batch"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/medicines/{id}": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "put medicines object",
+            "in": "body",
+            "description": "New medicines values",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "new medicines"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "medicines description"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "aaa@aaa.com"
+                },
+                "phone": {
+                  "type": "string",
                   "example": "(19) 99999-9999"
                 }
               },
@@ -167,6 +305,65 @@
                 "description",
                 "email",
                 "phone"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "patch": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "post medicines object",
+            "in": "body",
+            "description": "New medicines values",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "new medicine"
+                },
+                "manufacturer": {
+                  "type": "string",
+                  "example": "the manufacturer"
+                },
+                "prescription": {
+                  "type": "string",
+                  "example": "false or true"
+                },
+                "amount": {
+                  "type": "string",
+                  "example": "amount of medicine"
+                },
+                "expiration_date": {
+                  "type": "string",
+                  "example": "yyyy/mm/dd"
+                },
+                "batch": {
+                  "type": "string",
+                  "example": "batch here"
+                }
+              },
+              "required": [
+                "name",
+                "manufacturer",
+                "prescription",
+                "amount",
+                "expiration_date",
+                "batch"
               ]
             }
           }

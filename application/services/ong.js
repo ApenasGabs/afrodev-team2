@@ -59,11 +59,7 @@ exports.patch = async (id, newOng) => {
 
 exports.update = async (id, newOng) => {
   try {
-    const ong = await Ong.findOne({
-      where: {
-        id,
-      },
-    });
+    const ong = await Ong.findByPk(id);
     ong.set(newOng);
     ong.save();
     return ong;
