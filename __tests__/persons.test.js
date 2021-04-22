@@ -10,12 +10,9 @@ describe('Getting data from API - Persons', () => {
   });
 
   it('Calling GET endpoint without parameters', async () => {
-    // Sends GET Request to /test endpoint
-
     const res = await request.get('/persons');
     expect(res.status).toBe(200);
     expect(res.body).toStrictEqual([]);
-    // ...
   });
 
   afterAll(async (done) => {

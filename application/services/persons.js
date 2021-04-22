@@ -29,11 +29,7 @@ exports.findAll = async (persons) => {
 
 exports.findById = async (id) => {
   try {
-    const result = await Persons.findAll({
-      where: {
-        id,
-      },
-    });
+    const result = await Persons.findByPk(id);
     return result;
   } catch (err) {
     console.log(err);
@@ -60,11 +56,7 @@ exports.patch = async (id, newpersons) => {
 
 exports.update = async (id, newpersons) => {
   try {
-    const persons = await Persons.findOne({
-      where: {
-        id,
-      },
-    });
+    const persons = await Persons.findByPk(id);
     persons.set(newpersons);
     persons.save();
     return persons;

@@ -15,7 +15,8 @@ module.exports = (app) => {
             schema: {
                 "$name": "new persons",
                 "$document": "999.999.999-99",
-                "$birth_date": "00/00/0000"
+                "$birth_date": "00/00/0000",
+                "$status": "active"
             }
     } */
     const errors = validators.validateRequest(request);
@@ -43,7 +44,8 @@ module.exports = (app) => {
             schema: {
                 "$name": "new persons",
                 "$document": "999.999.999-99",
-                "$birth_date": "00/00/0000"
+                "$birth_date": "00/00/0000",
+                "$status": "active"
             }
     } */
     const errors = validators.validateRequest(request);
@@ -61,7 +63,8 @@ module.exports = (app) => {
             schema: {
                 "$name": "new persons",
                 "$document": "999.999.999-99",
-                "$birth_date": "00/00/0000"
+                "$birth_date": "00/00/0000",
+                "$status": "active"
             }
     } */
     const errors = validators.validateRequest(request);
