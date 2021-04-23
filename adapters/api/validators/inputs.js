@@ -56,11 +56,11 @@ exports.updateValidator = () => [
 exports.patchValidator = () => [
   check('name')
     .isString()
-    .notEmpty()
+    .optional()
     .withMessage('name is required'),
   check('type')
     .isString()
-    .notEmpty()
+    .optional()
     .withMessage('type is required'),
   check('expiration_date')
     .isString()
@@ -69,10 +69,10 @@ exports.patchValidator = () => [
     .withMessage('format date invalid'),
   check('quantity')
     .isDecimal()
-    .notEmpty()
+    .optional()
     .withMessage('quantity is required'),
   check('unit')
     .isString()
-    .notEmpty()
+    .optional()
     .withMessage('unit is required'),
 ];

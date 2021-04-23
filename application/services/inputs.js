@@ -63,7 +63,7 @@ exports.update = async (id, newInputs) => {
   try {
     const inputs = await Inputs.findByPk(id);
     inputs.set(newInputs);
-    inputs.save;
+    inputs.save();
     return inputs;
   } catch (err) {
     console.log(err);
