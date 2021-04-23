@@ -56,7 +56,7 @@ exports.updateValidator = () => [
 exports.patchValidator = () => [
   check('name')
     .optional(),
-  check('rnmanufacturer')
+  check('manufacturer')
     .optional()
     .isLength({ max: 50 })
     .withMessage('manufacturer must have less then 200 characters'),

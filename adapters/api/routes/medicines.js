@@ -17,7 +17,7 @@ module.exports = (app) => {
                 "$manufacturer": "the manufacturer",
                 "$prescription": "false or true",
                 "$amount": "amount of medicine",
-                "$expiration_date": "yyyy/mm/dd",
+                "$expiration_date": "dd/mm/yyyy",
                 "$batch": "batch here"
             }
     } */
@@ -39,20 +39,23 @@ module.exports = (app) => {
   });
 
   app.put('/medicines/:id', validators.updateValidator(), async (request, reply) => {
-    /*  #swagger.parameters['put medicines object'] = {
+    /*  #swagger.parameters['post medicines object'] = {
             in: 'body',
             description: "New medicines values",
             schema: {
-                "$name": "new medicines",
-                "$description": "medicines description",
-                "$email": "aaa@aaa.com",
-                "$phone": "(19) 99999-9999"
+                "$name": "new medicine",
+                "$manufacturer": "the manufacturer",
+                "$prescription": "false or true",
+                "$amount": "amount of medicine",
+                "$expiration_date": "dd/mm/yyyy",
+                "$batch": "batch here"
             }
     } */
     const errors = validators.validateRequest(request);
     if (errors.length > 0) {
       return invalidRequestReply(request, reply, errors);
     }
+    console.log(request)
     const response = await controller.put(request.params.id, request, reply);
     return reply.json(response);
   });
@@ -66,7 +69,7 @@ module.exports = (app) => {
                 "$manufacturer": "the manufacturer",
                 "$prescription": "false or true",
                 "$amount": "amount of medicine",
-                "$expiration_date": "yyyy/mm/dd",
+                "$expiration_date": "dd/mm/yyyy",
                 "$batch": "batch here"
             }
     } */
