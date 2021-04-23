@@ -1,8 +1,18 @@
 /* eslint-disable no-console */
+const moment = require('moment');
 const Persons = require('../model/persons');
 
 exports.register = async (persons) => {
   try {
+    const date = moment(persons.birth_date, 'DD/MM/YYYY').format('YYYY/MM/DD');
+    const birthDate = new Date(date);
+    const current = new Date();
+    if (birthDate > current) {
+      const error = new Error();
+      error.message = 'Please, insert a date lower than current date.';
+      error.statusCode = 406;
+      return error;
+    }
     const newpersons = await Persons.create(persons);
     return newpersons;
   } catch (err) {
@@ -47,17 +57,20 @@ exports.findById = async (id) => {
 
 exports.patch = async (id, newpersons) => {
   try {
+    const date = moment(newpersons.birth_date, 'DD/MM/YYYY').format('YYYY/MM/DD');
+    const birthDate = new Date(date);
+    const current = new Date();
+    if (birthDate > current) {
+      const error = new Error();
+      error.message = 'Please, insert a date lower than current date.';
+      error.statusCode = 406;
+      return error;
+    }
     const result = await Persons.update(newpersons, {
       where: {
         id,
       },
     });
-    if (!result) {
-      const error = new Error();
-      error.message = 'Id not found in database';
-      error.statusCode = 404;
-      return error;
-    }
     return result;
   } catch (err) {
     console.log(err);
@@ -73,7 +86,16 @@ exports.update = async (id, newpersons) => {
     if (!persons) {
       const error = new Error();
       error.message = 'Id not found in database';
-      error.statusCode = 404;
+      error.status = 404;
+      return error;
+    }
+    const date = moment(persons.birth_date, 'DD/MM/YYYY').format('YYYY/MM/DD');
+    const birthDate = new Date(date);
+    const current = new Date();
+    if (birthDate > current) {
+      const error = new Error();
+      error.message = 'Please, insert a date lower than current date.';
+      error.statusCode = 406;
       return error;
     }
     persons.set(newpersons);
