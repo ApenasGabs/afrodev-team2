@@ -20,10 +20,13 @@ module.exports = (app) => {
             }
     } */
     const errors = validators.validateRequest(request);
-    if (errors.length > 0) {
+    if (errors.length) {
       return invalidRequestReply(request, reply, errors);
     }
     const response = await controller.post(request, reply);
+    if (response.statusCode && response.statusCode !== 200) {
+      return reply.status(response.statusCode).json(response);
+    }
     return reply.json(response);
   });
 
@@ -34,6 +37,9 @@ module.exports = (app) => {
 
   app.get('/persons/:id', async (request, reply) => {
     const response = await controller.getById(request.params.id, request, reply);
+    if (response.statusCode && response.statusCode !== 200) {
+      return reply.status(response.statusCode).json(response);
+    }
     return reply.json(response);
   });
 
@@ -49,10 +55,13 @@ module.exports = (app) => {
             }
     } */
     const errors = validators.validateRequest(request);
-    if (errors.length > 0) {
+    if (errors.length) {
       return invalidRequestReply(request, reply, errors);
     }
     const response = await controller.put(request.params.id, request, reply);
+    if (response.statusCode && response.statusCode !== 200) {
+      return reply.status(response.statusCode).json(response);
+    }
     return reply.json(response);
   });
 
@@ -68,10 +77,13 @@ module.exports = (app) => {
             }
     } */
     const errors = validators.validateRequest(request);
-    if (errors.length > 0) {
+    if (errors.length) {
       return invalidRequestReply(request, reply, errors);
     }
     const response = await controller.patch(request.params.id, request, reply);
+    if (response.statusCode && response.statusCode !== 200) {
+      return reply.status(response.statusCode).json(response);
+    }
     return reply.json(response);
   });
 };
