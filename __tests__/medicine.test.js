@@ -41,7 +41,7 @@ describe('Getting data from API - MEDICINE', () => {
         expiration_date: "2022/09/18",
         batch: "blabla"      
     });
-    const id = test.id
+    const id = test.text.indexOf('id')
     const res = await request.get(`/medicines/${id}`);
     expect(res.status).toBe(200);
   });
@@ -57,8 +57,7 @@ describe('Getting data from API - MEDICINE', () => {
         expiration_date: "2022/09/18",
         batch: "blabla"      
     });
-    const id = test.id
-    //console.log(id)
+    const id = test.text.indexOf('id')
     const res = await request.put(`/medicines/${id}`)
     .type('application/json')
     .send({
@@ -83,7 +82,7 @@ describe('Getting data from API - MEDICINE', () => {
         expiration_date: "2022/09/18",
         batch: "blabla"      
     });
-    const id = test.id
+    const id = test.text.indexOf('id')
     const res = await request.patch(`/medicines/${id}`)
     .type('json')
     .send({
@@ -103,7 +102,7 @@ describe('Getting data from API - MEDICINE', () => {
         expiration_date: "2022/09/18",
         batch: "blabla"      
     });
-    const id = test.id
+    const id = test.text.indexOf('id')
     const res = await request.delete(`/medicines/${id}`)
     expect(res.status).toBe(200)
   });
