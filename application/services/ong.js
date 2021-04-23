@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const Ong = require('../model/ong');
 
 exports.register = async (ong) => {
@@ -6,8 +5,7 @@ exports.register = async (ong) => {
     const newOng = await Ong.create(ong);
     return newOng;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while creating ong');
+    const error = new Error('An error occurred while creating ong');
     error.statusCode = 500;
     throw error;
   }
@@ -20,8 +18,7 @@ exports.findAll = async (ong) => {
     });
     return ongs;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while finding ongs');
+    const error = new Error('An error occurred while finding ongs');
     error.statusCode = 500;
     throw error;
   }
@@ -36,8 +33,7 @@ exports.findById = async (id) => {
     });
     return ongs;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while finding ong by id');
+    const error = new Error('An error occurred while finding ong by id');
     error.statusCode = 500;
     throw error;
   }
@@ -51,8 +47,7 @@ exports.patch = async (id, newOng) => {
       },
     });
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while updating ong');
+    const error = new Error('An error occurred while updating ong');
     error.statusCode = 500;
     throw error;
   }
@@ -65,8 +60,7 @@ exports.update = async (id, newOng) => {
     ong.save();
     return ong;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while updating ong');
+    const error = new Error('An error occurred while updating ong');
     error.statusCode = 500;
     throw error;
   }
@@ -81,8 +75,7 @@ exports.delete = async (id) => {
     });
     return ong;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while deleting ong');
+    const error = new Error('An error occurred while deleting ong');
     error.statusCode = 500;
     throw error;
   }

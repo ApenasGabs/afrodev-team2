@@ -1,23 +1,18 @@
-/* eslint-disable no-console */
 const moment = require('moment');
 const Persons = require('../model/persons');
 
 exports.register = async (persons) => {
   try {
-    const date = moment(persons.birth_date, 'DD/MM/YYYY').format('YYYY/MM/DD');
-    const birthDate = new Date(date);
-    const current = new Date();
-    if (birthDate > current) {
+    if (moment().isBefore(moment(persons.birth_date, 'DD/MM/YYYY'), 'day')) {
       const error = new Error();
       error.message = 'Please, insert a date lower than current date.';
-      error.statusCode = 406;
+      error.statusCode = 400;
       return error;
     }
     const newpersons = await Persons.create(persons);
     return newpersons;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while creating persons');
+    const error = new Error('An error occurred while creating persons');
     error.statusCode = 500;
     throw error;
   }
@@ -30,8 +25,7 @@ exports.findAll = async (persons) => {
     });
     return result;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while finding persons');
+    const error = new Error('An error occurred while finding persons');
     error.statusCode = 500;
     throw error;
   }
@@ -48,8 +42,7 @@ exports.findById = async (id) => {
     }
     return result;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while finding persons by id');
+    const error = new Error('An error occurred while finding persons by id');
     error.statusCode = 500;
     throw error;
   }
@@ -57,13 +50,10 @@ exports.findById = async (id) => {
 
 exports.patch = async (id, newpersons) => {
   try {
-    const date = moment(newpersons.birth_date, 'DD/MM/YYYY').format('YYYY/MM/DD');
-    const birthDate = new Date(date);
-    const current = new Date();
-    if (birthDate > current) {
+    if (moment().isBefore(moment(newpersons.birth_date, 'DD/MM/YYYY'), 'day')) {
       const error = new Error();
       error.message = 'Please, insert a date lower than current date.';
-      error.statusCode = 406;
+      error.statusCode = 400;
       return error;
     }
     const result = await Persons.update(newpersons, {
@@ -71,10 +61,15 @@ exports.patch = async (id, newpersons) => {
         id,
       },
     });
+    if (result === '0') {
+      const error = new Error();
+      error.message = 'Id not found in database';
+      error.statusCode = 404;
+      return error;
+    }
     return result;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while updating persons');
+    const error = new Error('An error occurred while updating persons');
     error.statusCode = 500;
     throw error;
   }
@@ -86,24 +81,20 @@ exports.update = async (id, newpersons) => {
     if (!persons) {
       const error = new Error();
       error.message = 'Id not found in database';
-      error.status = 404;
+      error.statusCode = 404;
       return error;
     }
-    const date = moment(persons.birth_date, 'DD/MM/YYYY').format('YYYY/MM/DD');
-    const birthDate = new Date(date);
-    const current = new Date();
-    if (birthDate > current) {
+    if (moment().isBefore(moment(newpersons.birth_date, 'DD/MM/YYYY'), 'day')) {
       const error = new Error();
       error.message = 'Please, insert a date lower than current date.';
-      error.statusCode = 406;
+      error.statusCode = 400;
       return error;
     }
     persons.set(newpersons);
     persons.save();
     return persons;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while updating persons');
+    const error = new Error('An error occurred while updating persons');
     error.statusCode = 500;
     throw error;
   }
