@@ -159,7 +159,7 @@
                 },
                 "phone": {
                   "type": "string",
-                  "example": "(19) 99999-9998"
+                  "example": "(19) 99999-9999"
                 }
               },
               "required": [
@@ -221,7 +221,7 @@
                 },
                 "expiration_date": {
                   "type": "string",
-                  "example": "yyyy/mm/dd"
+                  "example": "dd/mm/yyyy"
                 },
                 "batch": {
                   "type": "string",
@@ -277,7 +277,7 @@
             "type": "string"
           },
           {
-            "name": "put medicines object",
+            "name": "post medicines object",
             "in": "body",
             "description": "New medicines values",
             "schema": {
@@ -285,26 +285,36 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "new medicines"
+                  "example": "new medicine"
                 },
-                "description": {
+                "manufacturer": {
                   "type": "string",
-                  "example": "medicines description"
+                  "example": "the manufacturer"
                 },
-                "email": {
+                "prescription": {
                   "type": "string",
-                  "example": "aaa@aaa.com"
+                  "example": "false or true"
                 },
-                "phone": {
+                "amount": {
                   "type": "string",
-                  "example": "(19) 99999-9999"
+                  "example": "amount of medicine"
+                },
+                "expiration_date": {
+                  "type": "string",
+                  "example": "dd/mm/yyyy"
+                },
+                "batch": {
+                  "type": "string",
+                  "example": "batch here"
                 }
               },
               "required": [
                 "name",
-                "description",
-                "email",
-                "phone"
+                "manufacturer",
+                "prescription",
+                "amount",
+                "expiration_date",
+                "batch"
               ]
             }
           }
@@ -350,7 +360,7 @@
                 },
                 "expiration_date": {
                   "type": "string",
-                  "example": "yyyy/mm/dd"
+                  "example": "dd/mm/yyyy"
                 },
                 "batch": {
                   "type": "string",

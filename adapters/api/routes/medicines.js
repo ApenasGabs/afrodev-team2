@@ -55,7 +55,7 @@ module.exports = (app) => {
     if (errors.length > 0) {
       return invalidRequestReply(request, reply, errors);
     }
-    console.log(request)
+    console.log(request);
     const response = await controller.put(request.params.id, request, reply);
     return reply.json(response);
   });
