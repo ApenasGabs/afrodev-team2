@@ -59,7 +59,7 @@ exports.patchValidator = () => [
   check('manufacturer')
     .optional()
     .isLength({ max: 50 })
-    .withMessage('manufacturer must have less then 200 characters'),
+    .withMessage('manufacturer must have less then 50 characters'),
   check('amount')
     .optional()
     .isInt()

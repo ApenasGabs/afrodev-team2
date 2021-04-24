@@ -253,6 +253,92 @@
       }
     },
     "/medicines/{id}": {
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/expenses": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "post expenses object",
+            "in": "body",
+            "description": "New expenses values",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "new expense"
+                },
+                "amount": {
+                  "type": "string",
+                  "example": "the amount"
+                },
+                "recurrent": {
+                  "type": "string",
+                  "example": "false or true"
+                },
+                "destination": {
+                  "type": "string",
+                  "example": "the destination"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Pago or Nao Pago"
+                },
+                "due_date": {
+                  "type": "string",
+                  "example": "YYYY/MM/DD"
+                },
+                "pay_date": {
+                  "type": "string",
+                  "example": "YYYY/MM/DD"
+                },
+                "value": {
+                  "type": "string",
+                  "example": "the value (float)"
+                }
+              },
+              "required": [
+                "name",
+                "amount",
+                "recurrent",
+                "destination",
+                "status",
+                "due_date",
+                "pay_date",
+                "value"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/expenses/{id}": {
       "get": {
         "tags": [],
         "description": "",
@@ -277,44 +363,54 @@
             "type": "string"
           },
           {
-            "name": "post medicines object",
+            "name": "put expenses object",
             "in": "body",
-            "description": "New medicines values",
+            "description": "New expenses values",
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "new medicine"
-                },
-                "manufacturer": {
-                  "type": "string",
-                  "example": "the manufacturer"
-                },
-                "prescription": {
-                  "type": "string",
-                  "example": "false or true"
+                  "example": "new expense"
                 },
                 "amount": {
                   "type": "string",
-                  "example": "amount of medicine"
+                  "example": "the amount"
                 },
-                "expiration_date": {
+                "recurrent": {
                   "type": "string",
-                  "example": "dd/mm/yyyy"
+                  "example": "false or true"
                 },
-                "batch": {
+                "destination": {
                   "type": "string",
-                  "example": "batch here"
+                  "example": "the destination"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Pago or Nao Pago"
+                },
+                "due_date": {
+                  "type": "string",
+                  "example": "YYYY/MM/DD"
+                },
+                "pay_date": {
+                  "type": "string",
+                  "example": "YYYY/MM/DD"
+                },
+                "value": {
+                  "type": "string",
+                  "example": "the value (float)"
                 }
               },
               "required": [
                 "name",
-                "manufacturer",
-                "prescription",
                 "amount",
-                "expiration_date",
-                "batch"
+                "recurrent",
+                "destination",
+                "status",
+                "due_date",
+                "pay_date",
+                "value"
               ]
             }
           }
@@ -336,44 +432,54 @@
             "type": "string"
           },
           {
-            "name": "post medicines object",
+            "name": "patch expenses object",
             "in": "body",
-            "description": "New medicines values",
+            "description": "New expenses values",
             "schema": {
               "type": "object",
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "new medicine"
-                },
-                "manufacturer": {
-                  "type": "string",
-                  "example": "the manufacturer"
-                },
-                "prescription": {
-                  "type": "string",
-                  "example": "false or true"
+                  "example": "new expense"
                 },
                 "amount": {
                   "type": "string",
-                  "example": "amount of medicine"
+                  "example": "the amount"
                 },
-                "expiration_date": {
+                "recurrent": {
                   "type": "string",
-                  "example": "dd/mm/yyyy"
+                  "example": "false or true"
                 },
-                "batch": {
+                "destination": {
                   "type": "string",
-                  "example": "batch here"
+                  "example": "the destination"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Pago or Nao Pago"
+                },
+                "due_date": {
+                  "type": "string",
+                  "example": "YYYY/MM/DD"
+                },
+                "pay_date": {
+                  "type": "string",
+                  "example": "YYYY/MM/DD"
+                },
+                "value": {
+                  "type": "string",
+                  "example": "the value (float)"
                 }
               },
               "required": [
                 "name",
-                "manufacturer",
-                "prescription",
                 "amount",
-                "expiration_date",
-                "batch"
+                "recurrent",
+                "destination",
+                "status",
+                "due_date",
+                "pay_date",
+                "value"
               ]
             }
           }
@@ -383,19 +489,6 @@
             "description": "Bad Request"
           }
         }
-      },
-      "delete": {
-        "tags": [],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {}
       }
     }
   },

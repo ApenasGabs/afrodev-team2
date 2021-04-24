@@ -37,7 +37,7 @@ exports.findById = async (id) => {
   } catch (err) {
     console.log(err);
     const error = new Error('An error occurred while finding expenses by id');
-    error.statusCode = 500;
+    error.statusCode = 404;
     throw error;
   }
 };
@@ -73,7 +73,7 @@ exports.update = async (id, newExpense) => {
 
 exports.delete = async (id) => {
   try {
-    const expense = await Expenses.destory({
+    const expense = await Expenses.destroy({
       where: {
         id,
       },
@@ -82,7 +82,7 @@ exports.delete = async (id) => {
   } catch (err) {
     console.log(err);
     const error = new Error('An error occurred while deleting expense');
-    error.statusCode = 500;
+    error.statusCode = 404;
     throw error;
   }
 };

@@ -62,28 +62,23 @@ exports.updateValidator = () => [
 
 exports.patchValidator = () => [
   check('name')
-    .notEmpty()
+    .optional()
     .isLength({ max: 50 })
-    .withMessage('name is required'),
+    .withMessage('name must have less then 50 characters'),
   check('amount')
-    .notEmpty()
-    .withMessage('amount is required'),
+    .optional()
+    .isInt()
+    .withMessage('invalid amount'),
   check('recurrent')
-    .notEmpty()
-    .withMessage('recurrent is required'),
+    .optional(),
   check('destination')
-    .notEmpty()
-    .withMessage('destination is required'),
+    .optional(),
   check('status')
-    .notEmpty()
-    .withMessage('status is required'),
+    .optional(),
   check('due_date')
-    .notEmpty()
-    .withMessage('due_date is required'),
+    .optional(),
   check('due_date')
-    .notEmpty()
-    .withMessage('due_date is required'),
+    .optional(),
   check('value')
-    .notEmpty()
-    .withMessage('value_date is required'),
+    .optional()
 ];

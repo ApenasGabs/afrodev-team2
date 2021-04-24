@@ -39,7 +39,7 @@ module.exports = (app) => {
   });
 
   app.put('/medicines/:id', validators.updateValidator(), async (request, reply) => {
-    /*  #swagger.parameters['post medicines object'] = {
+    /*  #swagger.parameters['put medicines object'] = {
             in: 'body',
             description: "New medicines values",
             schema: {
@@ -55,13 +55,12 @@ module.exports = (app) => {
     if (errors.length > 0) {
       return invalidRequestReply(request, reply, errors);
     }
-    console.log(request);
     const response = await controller.put(request.params.id, request, reply);
     return reply.json(response);
   });
 
   app.patch('/medicines/:id', validators.patchValidator(), async (request, reply) => {
-    /*  #swagger.parameters['post medicines object'] = {
+    /*  #swagger.parameters['patch medicines object'] = {
             in: 'body',
             description: "New medicines values",
             schema: {
