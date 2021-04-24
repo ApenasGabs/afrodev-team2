@@ -13,7 +13,7 @@ module.exports = (app) => {
       return invalidRequestReply(request, reply, errors);
     }
     const response = await controller.post(request, reply);
-    return reply.json(response);
+    return reply.status(response.statusCode || 200).json(response);
   });
   app.get('/input', async (request, reply) => {
     const response = await controller.get(request, reply);
@@ -29,7 +29,7 @@ module.exports = (app) => {
       return invalidRequestReply(request, reply, errors);
     }
     const response = await controller.put(request.params.id, request, reply);
-    return reply.json(response);
+    return reply.status(response.statusCode || 200).json(response);
   });
   app.patch('/input/:id', validators.patchValidator(), async (request, reply) => {
     const errors = validators.validateRequest(request);
@@ -37,10 +37,10 @@ module.exports = (app) => {
       return invalidRequestReply(request, reply, errors);
     }
     const response = await controller.patch(request.params.id, request, reply);
-    return reply.json(response);
+    return reply.status(response.statusCode || 200).json(response);
   });
   app.delete('/input/:id', async (request, reply) => {
     const response = await controller.delete(request.params.id, request, reply);
-    return reply.json(response);
+    return reply.status(response.statusCode || 200).json(response);
   });
 };
