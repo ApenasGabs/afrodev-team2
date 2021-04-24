@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express');
 const consign = require('consign');
 const swaggerUi = require('swagger-ui-express');
@@ -20,7 +21,9 @@ const start = async () => {
       .include('adapters/api/routes')
       .into(app);
 
-    app.listen(3000, () => console.log('listening port 3000'));
+    if (process.env.NODE_ENV !== 'test') {
+      app.listen(3000, () => console.log('listening port 3000'));
+    }
   } catch (err) {
     console.log(err);
     process.exit(1);

@@ -190,6 +190,170 @@
         ],
         "responses": {}
       }
+    },
+    "/persons": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "post persons object",
+            "in": "body",
+            "description": "New persons values",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "new persons"
+                },
+                "document": {
+                  "type": "string",
+                  "example": "999.999.999-99"
+                },
+                "birth_date": {
+                  "type": "string",
+                  "example": "00/00/0000"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "active"
+                }
+              },
+              "required": [
+                "name",
+                "document",
+                "birth_date",
+                "status"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/persons/{id}": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
+      },
+      "put": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "post persons object",
+            "in": "body",
+            "description": "New persons values",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "new persons"
+                },
+                "document": {
+                  "type": "string",
+                  "example": "999.999.999-99"
+                },
+                "birth_date": {
+                  "type": "string",
+                  "example": "00/00/0000"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "active"
+                }
+              },
+              "required": [
+                "name",
+                "document",
+                "birth_date",
+                "status"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "patch": {
+        "tags": [],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "post persons object",
+            "in": "body",
+            "description": "New persons values",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "new persons"
+                },
+                "document": {
+                  "type": "string",
+                  "example": "999.999.999-99"
+                },
+                "birth_date": {
+                  "type": "string",
+                  "example": "00/00/0000"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "active"
+                }
+              },
+              "required": [
+                "name",
+                "document",
+                "birth_date",
+                "status"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
     }
   },
   "definitions": {}
