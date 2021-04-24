@@ -33,6 +33,7 @@ exports.findById = async (id) => {
     });
     return ongs;
   } catch (err) {
+    console.log(err);
     const error = new Error('An error occurred while finding ong by id');
     error.statusCode = 500;
     throw error;
@@ -47,6 +48,7 @@ exports.patch = async (id, newOng) => {
       },
     });
   } catch (err) {
+    console.log(err);
     const error = new Error('An error occurred while updating ong');
     error.statusCode = 500;
     throw error;
@@ -55,11 +57,12 @@ exports.patch = async (id, newOng) => {
 
 exports.update = async (id, newOng) => {
   try {
-    const ong = await Ong.findOne({ id });
+    const ong = await Ong.findByPk(id);
     ong.set(newOng);
     ong.save();
     return ong;
   } catch (err) {
+    console.log(err);
     const error = new Error('An error occurred while updating ong');
     error.statusCode = 500;
     throw error;
@@ -75,6 +78,7 @@ exports.delete = async (id) => {
     });
     return ong;
   } catch (err) {
+    console.log(err);
     const error = new Error('An error occurred while deleting ong');
     error.statusCode = 500;
     throw error;
