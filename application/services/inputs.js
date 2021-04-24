@@ -7,13 +7,11 @@ exports.register = async (inputs) => {
   try {
     moment.locale('pt-br');
     const today = moment().add(5, 'days').calendar('L');
-    if (inputs.expiration_date != null) {
-      if (moment(today, 'DD/MM/YYYY').isAfter(moment(inputs.expiration_date, 'DD/MM/YYYY'), 'day')) {
-        const error = new Error();
-        error.message = 'Expiration date expired';
-        error.statusCode = 400;
-        return error;
-      }
+    if (inputs.expiration_date != null && moment(today, 'DD/MM/YYYY').isAfter(moment(inputs.expiration_date, 'DD/MM/YYYY'), 'day')) {
+      const error = new Error();
+      error.message = 'Expiration date expired';
+      error.statusCode = 400;
+      return error;
     }
     const newIpnuts = await Inputs.create(inputs);
     return newIpnuts;
@@ -57,6 +55,14 @@ exports.findById = async (id) => {
 
 exports.patch = async (id, newInputs) => {
   try {
+    moment.locale('pt-br');
+    const today = moment().add(5, 'days').calendar('L');
+    if (newInputs.expiration_date != null && moment(today, 'DD/MM/YYYY').isAfter(moment(newInputs.expiration_date, 'DD/MM/YYYY'), 'day')) {
+      const error = new Error();
+      error.message = 'Expiration date expired';
+      error.statusCode = 400;
+      return error;
+    }
     return await Inputs.update(newInputs, {
       where: {
         id,
@@ -72,6 +78,14 @@ exports.patch = async (id, newInputs) => {
 
 exports.update = async (id, newInputs) => {
   try {
+    moment.locale('pt-br');
+    const today = moment().add(5, 'days').calendar('L');
+    if (newInputs.expiration_date != null && moment(today, 'DD/MM/YYYY').isAfter(moment(newInputs.expiration_date, 'DD/MM/YYYY'), 'day')) {
+      const error = new Error();
+      error.message = 'Expiration date expired';
+      error.statusCode = 400;
+      return error;
+    }
     const inputs = await Inputs.findByPk(id);
     inputs.set(newInputs);
     inputs.save();
