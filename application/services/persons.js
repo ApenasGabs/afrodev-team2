@@ -61,7 +61,7 @@ exports.patch = async (id, newpersons) => {
         id,
       },
     });
-    if (result === '0') {
+    if (result[0] === 0) {
       const error = new Error();
       error.message = 'Id not found in database';
       error.statusCode = 404;
