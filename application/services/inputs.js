@@ -1,9 +1,20 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-expressions */
+const moment = require('moment');
 const Inputs = require('../model/inputs');
 
 exports.register = async (inputs) => {
   try {
+    moment.locale('pt-br');
+    const today = moment().add(5, 'days').calendar('L');
+    if (inputs.expiration_date != null) {
+      if (moment(today, 'DD/MM/YYYY').isAfter(moment(inputs.expiration_date, 'DD/MM/YYYY'), 'day')) {
+        const error = new Error();
+        error.message = 'Expiration date expired';
+        error.statusCode = 400;
+        return error;
+      }
+    }
     const newIpnuts = await Inputs.create(inputs);
     return newIpnuts;
   } catch (err) {
